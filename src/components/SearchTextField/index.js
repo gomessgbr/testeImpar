@@ -7,7 +7,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 import SearchIcon from "@mui/icons-material/Search";
 import DirectionsIcon from "@mui/icons-material/Directions";
 
-export default function CustomizedInputBase() {
+export default function CustomizedInputBase({ placeholder }) {
   return (
     <Paper
       component="form"
@@ -18,7 +18,7 @@ export default function CustomizedInputBase() {
       </IconButton>
       <InputBase
         sx={{ ml: 1, flex: 1 }}
-        placeholder="Search Google Maps"
+        placeholder={placeholder}
         inputProps={{ "aria-label": "search google maps" }}
       />
       <IconButton type="button" sx={{ p: "10px" }} aria-label="search">
