@@ -1,12 +1,29 @@
-import { Box, Button, Grid } from "@mui/material";
+import React, { useEffect } from "react";
+
+import axios from "axios";
+
 import { Container } from "@mui/system";
-import React from "react";
+import { Box, Button, Grid } from "@mui/material";
 
 import Cards from "../../components/Cards";
 import TopBar from "../../components/TopBar";
 import SearchTextField from "../../components/SearchTextField";
 
 export default function Home() {
+  async function fetchPokemons() {
+    const response = await axios.get(
+      "https://pokeapi.co/api/v2/pokemon?limit=100"
+    );
+    if (response) {
+      console.log("response", response);
+    } else {
+      console.log("Error");
+    }
+  }
+
+  useEffect(() => {
+    fetchPokemons();
+  }, []);
   return (
     <>
       <TopBar />
