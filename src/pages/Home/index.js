@@ -10,6 +10,7 @@ import TopBar from "../../components/TopBar";
 import SearchTextField from "../../components/SearchTextField";
 
 export default function Home() {
+  const [dataPokemons, setDataPokemons] = useState([]);
   async function fetchPokemons() {
     let response;
     try {
