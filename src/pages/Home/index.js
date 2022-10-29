@@ -39,7 +39,15 @@ export default function Home() {
       >
         <SearchTextField placeholder="Digite aqui sua busca..." />
       </Box>
-      <Box>
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: "row",
+          justifyContent: "space-around",
+          marginTop: 5,
+          marginBottom: 5,
+        }}
+      >
         <h2>Resultado de Busca</h2>
         <Button>NovoCard</Button>
       </Box>
