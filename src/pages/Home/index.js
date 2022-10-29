@@ -17,6 +17,7 @@ export default function Home() {
     try {
       response = await axios.get("https://pokeapi.co/api/v2/pokemon?limit=100");
       response ? setDataPokemons(response.data.results) : console.log("Error");
+      console.log("response", response);
     } catch (e) {
       console.log("Algo deu errado na chamada da API", e);
     }
@@ -53,9 +54,9 @@ export default function Home() {
       </Box>
       <Container maxWidth="lg">
         <Grid container>
-          {dataPokemons.map((item, index) => (
+          {dataPokemons.map((pokemon, index) => (
             <Grid item xs={3} key={index}>
-              <Cards />
+              <Cards namePokemons={pokemon.name} />
             </Grid>
           ))}
         </Grid>
