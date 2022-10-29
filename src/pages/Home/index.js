@@ -11,13 +11,11 @@ import SearchTextField from "../../components/SearchTextField";
 
 export default function Home() {
   async function fetchPokemons() {
-    const response = await axios.get(
-      "https://pokeapi.co/api/v2/pokemon?limit=100"
-    );
-    if (response) {
-      console.log("response", response);
-    } else {
-      console.log("Error");
+    let response;
+    try {
+      response = await axios.get("https://pokeapi.co/api/v2/pokemon?limit=100");
+    } catch (e) {
+      console.log("Algo deu errado na chamada da API", e);
     }
   }
 
