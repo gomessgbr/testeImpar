@@ -28,8 +28,16 @@ export default function Home() {
   return (
     <>
       <TopBar />
-      <Box>
-        <SearchTextField placeholder="Digite aqui sua busca" />
+      <Box
+        sx={{
+          display: "flex",
+          height: 200,
+          justifyContent: "center",
+          backgroundColor: "primary.dark",
+          alignItems: "center",
+        }}
+      >
+        <SearchTextField placeholder="Digite aqui sua busca..." />
       </Box>
       <Box>
         <h2>Resultado de Busca</h2>
