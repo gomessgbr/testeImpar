@@ -7,7 +7,7 @@ import Typography from "@mui/material/Typography";
 export default function TopBar() {
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static">
+      <AppBar position="static" sx={{ backgroundColor: "purple" }}>
         <Toolbar>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             Teste Ímpar
