@@ -13,14 +13,25 @@ export default function Home() {
   const [dataPokemons, setDataPokemons] = useState([]);
 
   async function fetchPokemons() {
-    let response;
-    try {
-      response = await axios.get("https://pokeapi.co/api/v2/pokemon?limit=100");
-      response ? setDataPokemons(response.data.results) : console.log("Error");
-      console.log("response", response);
-    } catch (e) {
-      console.log("Algo deu errado na chamada da API", e);
-    }
+    await axios
+      .get("https://pokeapi.co/api/v2/pokemon?limit=100")
+      .then((res) => {
+        setDataPokemons(res.data.results);
+        fetchPokemonsImages(res.data.results);
+      })
+
+      .catch((e) => console.log("Erro!", e));
+  }
+
+  async function fetchPokemonsImages(pokemons) {
+    const response = await axios.all(
+      pokemons.map((pokemon) => {
+        return axios.get(`https://pokeapi.co/api/v2/pokemon/${pokemon.name}`);
+      })
+    );
+    const imagePokemons = response.map(({ data }) => {
+      console.log("imagePokemons", imagePokemons);
+    });
   }
 
   useEffect(() => {
