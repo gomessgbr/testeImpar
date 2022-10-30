@@ -23,6 +23,22 @@ export default function Home() {
       .catch((e) => console.log("Erro!", e));
   }
 
+  const searchPokemons = (inputData) => {
+    
+    if (!inputData) {
+      fetchPokemons();
+    }
+    let filtredPokemons = [];
+    const lowerCaseData = inputData.toLowerCase();
+    dataPokemons.filter((pokemon) => {
+      return pokemon.name.includes(lowerCaseData)
+        ? filtredPokemons.push(pokemon)
+        : null;
+    });
+
+    setDataPokemons(filtredPokemons);
+  };
+
   // async function fetchPokemonsImages(pokemons) {
   //   const response = await axios.all(
   //     pokemons.map((pokemon) => {
@@ -49,7 +65,10 @@ export default function Home() {
           alignItems: "center",
         }}
       >
-        <SearchTextField placeholder="Digite aqui sua busca..." />
+        <SearchTextField
+          placeholder="Digite aqui sua busca..."
+          searchPokemons={searchPokemons}
+        />
       </Box>
       <Box
         sx={{
@@ -64,7 +83,7 @@ export default function Home() {
         <Button>NovoCard</Button>
       </Box>
       <Container maxWidth="lg">
-        <Grid container spacing>
+        <Grid container spacing={3}>
           {dataPokemons.map((pokemon, index) => (
             <Grid item xs={3} key={index}>
               <Cards namePokemons={pokemon.name} />
