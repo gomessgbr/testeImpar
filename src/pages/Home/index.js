@@ -17,22 +17,22 @@ export default function Home() {
       .get("https://pokeapi.co/api/v2/pokemon?limit=100")
       .then((res) => {
         setDataPokemons(res.data.results);
-        fetchPokemonsImages(res.data.results);
+        // fetchPokemonsImages(res.data.results);
       })
 
       .catch((e) => console.log("Erro!", e));
   }
 
-  async function fetchPokemonsImages(pokemons) {
-    const response = await axios.all(
-      pokemons.map((pokemon) => {
-        return axios.get(`https://pokeapi.co/api/v2/pokemon/${pokemon.name}`);
-      })
-    );
-    const imagePokemons = response.map(({ data }) => {
-      console.log("imagePokemons", imagePokemons);
-    });
-  }
+  // async function fetchPokemonsImages(pokemons) {
+  //   const response = await axios.all(
+  //     pokemons.map((pokemon) => {
+  //       return axios.get(`https://pokeapi.co/api/v2/pokemon/${pokemon.name}`);
+  //     })
+  //   );
+  //   const imagePokemons = response.map(({ data }) => {
+  //     console.log("imagePokemons", data);
+  //   });
+  // }
 
   useEffect(() => {
     fetchPokemons();
@@ -64,7 +64,7 @@ export default function Home() {
         <Button>NovoCard</Button>
       </Box>
       <Container maxWidth="lg">
-        <Grid container>
+        <Grid container spacing>
           {dataPokemons.map((pokemon, index) => (
             <Grid item xs={3} key={index}>
               <Cards namePokemons={pokemon.name} />
