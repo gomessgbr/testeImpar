@@ -8,6 +8,7 @@ import { Box, Button, Grid } from "@mui/material";
 import Cards from "../../components/Cards";
 import TopBar from "../../components/TopBar";
 import SearchTextField from "../../components/SearchTextField";
+import PaginationComponent from "../../components/Pagination";
 
 export default function Home() {
   const [dataPokemons, setDataPokemons] = useState([]);
@@ -21,7 +22,6 @@ export default function Home() {
         setDataPokemons(res.data.results);
         setNextPage(res.data.next);
         setPrevPage(res.data.previous);
-        fetchPokemonsImages(res.data);
       })
 
       .catch((e) => console.log("Erro!", e));
@@ -83,6 +83,7 @@ export default function Home() {
           ))}
         </Grid>
       </Container>
+      <PaginationComponent />
     </>
   );
 }
