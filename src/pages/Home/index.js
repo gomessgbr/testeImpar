@@ -11,20 +11,23 @@ import SearchTextField from "../../components/SearchTextField";
 
 export default function Home() {
   const [dataPokemons, setDataPokemons] = useState([]);
+  const [nextPage, setNextPage] = useState("");
+  const [prevPage, setPrevPage] = useState("");
 
   async function fetchPokemons() {
     await axios
-      .get("https://pokeapi.co/api/v2/pokemon?limit=100")
+      .get("https://pokeapi.co/api/v2/pokemon?offset=0&limit=50")
       .then((res) => {
         setDataPokemons(res.data.results);
-        // fetchPokemonsImages(res.data.results);
+        setNextPage(res.data.next);
+        setPrevPage(res.data.previous);
+        fetchPokemonsImages(res.data);
       })
 
       .catch((e) => console.log("Erro!", e));
   }
 
   const searchPokemons = (inputData) => {
-    
     if (!inputData) {
       fetchPokemons();
     }
@@ -38,17 +41,6 @@ export default function Home() {
 
     setDataPokemons(filtredPokemons);
   };
-
-  // async function fetchPokemonsImages(pokemons) {
-  //   const response = await axios.all(
-  //     pokemons.map((pokemon) => {
-  //       return axios.get(`https://pokeapi.co/api/v2/pokemon/${pokemon.name}`);
-  //     })
-  //   );
-  //   const imagePokemons = response.map(({ data }) => {
-  //     console.log("imagePokemons", data);
-  //   });
-  // }
 
   useEffect(() => {
     fetchPokemons();
