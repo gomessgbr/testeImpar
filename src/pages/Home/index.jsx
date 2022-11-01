@@ -5,6 +5,8 @@ import axios from "axios";
 import { Container } from "@mui/system";
 import { Box, Button, Grid } from "@mui/material";
 
+import fundobusca from "../../assets/fundo-busca.png";
+
 import Cards from "../../components/Cards";
 import TopBar from "../../components/TopBar";
 import SearchTextField from "../../components/SearchTextField";
@@ -56,12 +58,13 @@ export default function Home() {
   return (
     <>
       <TopBar />
-      <Box
-        sx={{
+
+      <div
+        style={{
           display: "flex",
           height: 200,
           justifyContent: "center",
-          backgroundColor: "primary.dark",
+          backgroundImage: `url(${fundobusca})`,
           alignItems: "center",
         }}
       >
@@ -69,7 +72,7 @@ export default function Home() {
           placeholder="Digite aqui sua busca..."
           searchPokemons={searchPokemons}
         />
-      </Box>
+      </div>
       <Box
         sx={{
           display: "flex",
@@ -79,8 +82,12 @@ export default function Home() {
           marginBottom: 5,
         }}
       >
-        <h2>Resultado de Busca</h2>
-        <Button>NovoCard</Button>
+        <h2 style={{ color: "purple" }}>Resultado de Busca</h2>
+        <Box>
+          <Button variant="contained" sx={{ backgroundColor: "#E76316" }}>
+            Novo Card
+          </Button>
+        </Box>
       </Box>
       <Container maxWidth="lg">
         <Grid container spacing={3}>
