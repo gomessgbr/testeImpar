@@ -1,7 +1,23 @@
 import React from "react";
 import Pagination from "@mui/material/Pagination";
 import Stack from "@mui/material/Stack";
+import Button from "@mui/material/Button";
 
-export default function PaginationComponent({ onClick }) {
-  return <Pagination count={10} color="secondary" onClick={onClick} />;
+export default function PaginationComponent({ onClickNext, onClickPrevious }) {
+  return (
+    <Stack
+      spacing={2}
+      direction="row"
+      alignItems="center"
+      justifyContent="center"
+    >
+      <Button size="medium" variant="contained" onClick={onClickPrevious}>
+        Previous
+      </Button>
+      <Button size="medium" variant="contained" onClick={onClickNext}>
+        Next
+      </Button>
+      {/* <Pagination count={10} color="secondary" onChange={onChange} /> */}
+    </Stack>
+  );
 }
