@@ -14,25 +14,32 @@ import { Box } from "@mui/material";
 export default function Cards({ namePokemons, image }) {
   return (
     <Card sx={{ maxWidth: 345 }}>
-      <Box borderBottom={0.5} borderColor="#a0a0a0" marginBottom={1}>
+      <Box marginBottom={1}>
         <CardMedia component="img" image={image} alt="green iguana" />
         <CardContent>
           <Typography flex={1}>{namePokemons}</Typography>
         </CardContent>
       </Box>
-      <CardActions>
+      <CardActions sx={{ flex: 1 }}>
         <Stack
+          borderTop={0.5}
+          borderColor="#a0a0a0"
           direction="row"
           alignItems="center"
           justifyContent="space-around"
           flex={1}
         >
-          <Button variant="outlined" startIcon={<DeleteOutlineOutlinedIcon />}>
+          <Button
+            sx={{ color: "#263238", flex: 1, margin: 1 }}
+            startIcon={<DeleteOutlineOutlinedIcon color="error" />}
+          >
             Excluir
           </Button>
           <Button
-            variant="outlined"
-            startIcon={<ModeEditOutlineOutlinedIcon />}
+            sx={{ color: "#263238", flex: 1 }}
+            startIcon={
+              <ModeEditOutlineOutlinedIcon sx={{ color: "#E76316" }} />
+            }
           >
             Editar
           </Button>
