@@ -11,7 +11,12 @@ import DeleteOutlineOutlinedIcon from "@mui/icons-material/DeleteOutlineOutlined
 import Typography from "@mui/material/Typography";
 import { Box } from "@mui/material";
 
-export default function Cards({ namePokemons, image }) {
+export default function Cards({
+  namePokemons,
+  image,
+  onClickDeleteCard,
+  onClickEditCard,
+}) {
   return (
     <Card sx={{ maxWidth: 345 }}>
       <Box>
@@ -37,10 +42,12 @@ export default function Cards({ namePokemons, image }) {
           <Button
             sx={{ color: "#263238", flex: 1, margin: 1 }}
             startIcon={<DeleteOutlineOutlinedIcon color="error" />}
+            onClick={onClickDeleteCard}
           >
             Excluir
           </Button>
           <Button
+            onClick={onClickEditCard}
             sx={{ color: "#263238", flex: 1 }}
             startIcon={
               <ModeEditOutlineOutlinedIcon sx={{ color: "#E76316" }} />
