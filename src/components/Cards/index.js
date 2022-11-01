@@ -11,7 +11,7 @@ export default function Cards({ namePokemons, image }) {
     <Card sx={{ maxWidth: 345 }}>
       <CardMedia
         component="img"
-        height="140"
+        height="240"
         image={image}
         alt="green iguana"
       />
