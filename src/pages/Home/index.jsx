@@ -11,7 +11,7 @@ import Cards from "../../components/Cards";
 import TopBar from "../../components/TopBar";
 import SearchTextField from "../../components/SearchTextField";
 import PaginationComponent from "../../components/Pagination";
-import AlertDialog from "../../components/AlertModal";
+import AlertModal from "../../components/AlertModal";
 
 export default function Home() {
   const URL = "https://pokeapi.co/api/v2/pokemon?offset=0&limit=52";
@@ -123,7 +123,7 @@ export default function Home() {
 
       {noWorkButtons && (
         <>
-          <AlertDialog showModal={noWorkButtons} handleClose={handleClick} />
+          <AlertModal showModal={noWorkButtons} handleClose={handleClick} />
         </>
       )}
     </>
