@@ -11,13 +11,14 @@ import SearchTextField from "../../components/SearchTextField";
 import PaginationComponent from "../../components/Pagination";
 
 export default function Home() {
+  const URL = "https://pokeapi.co/api/v2/pokemon?offset=0&limit=50";
   const [dataPokemons, setDataPokemons] = useState([]);
   const [nextPage, setNextPage] = useState("");
   const [prevPage, setPrevPage] = useState("");
 
-  async function fetchPokemons() {
+  async function fetchPokemons(url) {
     await axios
-      .get("https://pokeapi.co/api/v2/pokemon?offset=0&limit=50")
+      .get(url)
       .then((res) => {
         axios
           .all(res.data.results.map(({ url }) => axios.get(url)))
@@ -31,7 +32,7 @@ export default function Home() {
 
   const searchPokemons = (inputData) => {
     if (!inputData) {
-      fetchPokemons();
+      fetchPokemons(URL);
     }
     let filtredPokemons = [];
     const lowerCaseData = inputData.toLowerCase();
@@ -43,9 +44,14 @@ export default function Home() {
 
     setDataPokemons(filtredPokemons);
   };
-
+  const handleNext = () => {
+    fetchPokemons(nextPage);
+  };
+  const handlePrevious = () => {
+    fetchPokemons(prevPage);
+  };
   useEffect(() => {
-    fetchPokemons();
+    fetchPokemons(URL);
   }, []);
   return (
     <>
@@ -90,7 +96,10 @@ export default function Home() {
           ))}
         </Grid>
       </Container>
-      <PaginationComponent />
+      <PaginationComponent
+        onClickNext={handleNext}
+        onClickPrevious={handlePrevious}
+      />
     </>
   );
 }
