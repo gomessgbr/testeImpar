@@ -11,7 +11,7 @@ import SearchTextField from "../../components/SearchTextField";
 import PaginationComponent from "../../components/Pagination";
 
 export default function Home() {
-  const URL = "https://pokeapi.co/api/v2/pokemon?offset=0&limit=50";
+  const URL = "https://pokeapi.co/api/v2/pokemon?offset=0&limit=52";
   const [dataPokemons, setDataPokemons] = useState([]);
   const [nextPage, setNextPage] = useState("");
   const [prevPage, setPrevPage] = useState("");
