@@ -35,9 +35,6 @@ export default function Home() {
   }
 
   const searchPokemons = (inputData) => {
-    if (!inputData) {
-      fetchPokemons(URL);
-    }
     let filtredPokemons = [];
     const lowerCaseData = inputData.toLowerCase();
     dataPokemons.filter((pokemon) => {
@@ -61,7 +58,7 @@ export default function Home() {
 
   useEffect(() => {
     fetchPokemons(URL);
-  }, []);
+  }, [setDataPokemons]);
   return (
     <>
       <TopBar />
