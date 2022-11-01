@@ -12,7 +12,7 @@ export default function SearchTextField({ placeholder, searchPokemons }) {
         display: "flex",
         alignItems: "center",
         width: 800,
-        height: 60,
+        marginTop: "3em",
       }}
       onChange={(event) => searchPokemons(event.target.value)}
     >
