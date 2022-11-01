@@ -19,7 +19,9 @@ export default function Home() {
     await axios
       .get("https://pokeapi.co/api/v2/pokemon?offset=0&limit=50")
       .then((res) => {
-        setDataPokemons(res.data.results);
+        axios
+          .all(res.data.results.map(({ url }) => axios.get(url)))
+          .then((res) => setDataPokemons(res));
         setNextPage(res.data.next);
         setPrevPage(res.data.previous);
       })
@@ -34,7 +36,7 @@ export default function Home() {
     let filtredPokemons = [];
     const lowerCaseData = inputData.toLowerCase();
     dataPokemons.filter((pokemon) => {
-      return pokemon.name.includes(lowerCaseData)
+      return pokemon.data.name.includes(lowerCaseData)
         ? filtredPokemons.push(pokemon)
         : null;
     });
@@ -78,7 +80,12 @@ export default function Home() {
         <Grid container spacing={3}>
           {dataPokemons.map((pokemon, index) => (
             <Grid item xs={3} key={index}>
-              <Cards namePokemons={pokemon.name} />
+              <Cards
+                namePokemons={pokemon.data.name}
+                image={
+                  pokemon.data.sprites.other["official-artwork"].front_default
+                }
+              />
             </Grid>
           ))}
         </Grid>
