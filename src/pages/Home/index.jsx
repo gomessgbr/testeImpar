@@ -11,12 +11,14 @@ import Cards from "../../components/Cards";
 import TopBar from "../../components/TopBar";
 import SearchTextField from "../../components/SearchTextField";
 import PaginationComponent from "../../components/Pagination";
+import AlertDialog from "../../components/AlertModal";
 
 export default function Home() {
   const URL = "https://pokeapi.co/api/v2/pokemon?offset=0&limit=52";
   const [dataPokemons, setDataPokemons] = useState([]);
   const [nextPage, setNextPage] = useState("");
   const [prevPage, setPrevPage] = useState("");
+  const [noWorkButtons, setNoWorkButtons] = useState(false);
 
   async function fetchPokemons(url) {
     await axios
@@ -52,6 +54,11 @@ export default function Home() {
   const handlePrevious = () => {
     fetchPokemons(prevPage);
   };
+
+  const handleClick = () => {
+    setNoWorkButtons(!noWorkButtons);
+  };
+
   useEffect(() => {
     fetchPokemons(URL);
   }, []);
@@ -84,7 +91,11 @@ export default function Home() {
       >
         <h2 style={{ color: "purple" }}>Resultado de Busca</h2>
         <Box>
-          <Button variant="contained" sx={{ backgroundColor: "#E76316" }}>
+          <Button
+            variant="contained"
+            sx={{ backgroundColor: "#E76316" }}
+            onClick={handleClick}
+          >
             Novo Card
           </Button>
         </Box>
@@ -98,6 +109,8 @@ export default function Home() {
                 image={
                   pokemon.data.sprites.other["official-artwork"].front_default
                 }
+                onClickDeleteCard={handleClick}
+                onClickEditCard={handleClick}
               />
             </Grid>
           ))}
@@ -107,6 +120,12 @@ export default function Home() {
         onClickNext={handleNext}
         onClickPrevious={handlePrevious}
       />
+
+      {noWorkButtons && (
+        <>
+          <AlertDialog showModal={noWorkButtons} handleClose={handleClick} />
+        </>
+      )}
     </>
   );
 }
