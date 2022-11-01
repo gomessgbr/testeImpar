@@ -10,12 +10,13 @@ export default function PaginationComponent({ onClickNext, onClickPrevious }) {
       direction="row"
       alignItems="center"
       justifyContent="center"
+      padding={4}
     >
       <Button size="medium" variant="contained" onClick={onClickPrevious}>
-        Previous
+        Anterior 
       </Button>
       <Button size="medium" variant="contained" onClick={onClickNext}>
-        Next
+        Proximo
       </Button>
       {/* <Pagination count={10} color="secondary" onChange={onChange} /> */}
     </Stack>
