@@ -14,7 +14,7 @@ import { Box } from "@mui/material";
 export default function Cards({ namePokemons, image }) {
   return (
     <Card sx={{ maxWidth: 345 }}>
-      <Box borderBottom={0.5} borderColor="#a0a0a0">
+      <Box borderBottom={0.5} borderColor="#a0a0a0" marginBottom={1}>
         <CardMedia component="img" image={image} alt="green iguana" />
         <CardContent>
           <Typography flex={1}>{namePokemons}</Typography>
