@@ -100,7 +100,7 @@ export default function Home() {
       <Container maxWidth="lg">
         <Grid container spacing={3}>
           {dataPokemons.map((pokemon, index) => (
-            <Grid item xs={3} key={index}>
+            <Grid item xs={12} sm={6} md={3} key={index}>
               <Cards
                 namePokemons={pokemon.data.name}
                 image={
