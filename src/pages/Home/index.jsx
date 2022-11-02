@@ -36,7 +36,7 @@ export default function Home() {
 
   const searchPokemons = (inputData) => {
     let filtredPokemons = [];
-    const lowerCaseData = inputData.toLowerCase();
+    const lowerCaseData = inputData.toLowerCase().trim();
     dataPokemons.filter((pokemon) => {
       return pokemon.data.name.includes(lowerCaseData)
         ? filtredPokemons.push(pokemon)
