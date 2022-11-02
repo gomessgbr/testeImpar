@@ -35,6 +35,7 @@ export default function Home() {
   }
 
   const searchPokemons = (inputData) => {
+    if (!inputData) fetchPokemons(URL);
     let filtredPokemons = [];
     const lowerCaseData = inputData.toLowerCase().trim();
     dataPokemons.filter((pokemon) => {
