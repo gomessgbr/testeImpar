@@ -11,5 +11,6 @@ Projeto construído para o teste de desenvolvedor na Ímpar.
 # Como instalar o projeto
 
 1. Clone o repositório
-2. Rode yarn ou npm install
-3. Rode yarn start ou npm start
+2. Rode `yarn ou npm install`
+
+3. Rode `yarn start ou npm start`
