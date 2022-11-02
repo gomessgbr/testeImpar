@@ -1,5 +1,5 @@
 import React from "react";
-import Pagination from "@mui/material/Pagination";
+
 import Stack from "@mui/material/Stack";
 import Button from "@mui/material/Button";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
@@ -32,7 +32,6 @@ export default function PaginationComponent({ onClickNext, onClickPrevious }) {
       >
         Proximo
       </Button>
-      {/* <Pagination count={10} color="secondary" onChange={onChange} /> */}
     </Stack>
   );
 }
